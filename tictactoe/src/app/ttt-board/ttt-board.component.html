@@ -1,0 +1,13 @@
+
+<div class="grid">
+  @for (row of cells(); track rowIndex; let rowIndex = $index) {
+    @for (val of row; track colIndex; let colIndex = $index) {
+      <app-ttt-board-cell (onSet)="updatePeace(rowIndex,colIndex)" [cellPeace]="val"/>
+    }
+  }
+  <span>{{message()}}</span>
+  @if(isGameOver()){
+    <button mat-flat-button (click)="resetGame()">Reset</button>
+  }
+</div>
+
