@@ -53,11 +53,13 @@ export class TttBoardComponent {
     if(winner){
       this.message.update(()=>`${winner} is the winner!`);
       this.isGameOver.set(true);
+      return;
     }
 
     if(this.cells().flat().every(cell => cell !== Peace.Blank)){
       this.message.update(()=>`It's a tie!`);
       this.isGameOver.set(true);
+      return;
     }
 
 
