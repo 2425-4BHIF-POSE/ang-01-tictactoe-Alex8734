@@ -39,7 +39,11 @@ export class TttBoardComponent {
   protected message: WritableSignal<string> = signal(this.getTurnMessage(this.lastMove));
 
   protected readonly updatePeace = (row: number, col: number): void => {
+    if(this.isGameOver()){
+      return;
+    }
     this.cells.update(cells => {
+
       cells[row][col] = this.getNextMove();
       this.message.update(()=>this.getTurnMessage(this.lastMove));
       return cells;
